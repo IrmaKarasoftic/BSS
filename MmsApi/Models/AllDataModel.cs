@@ -15,7 +15,5 @@ namespace MmsApi.Models
         public List<DiabetesDataModel> preSupperBloodGlucoseDose { get; set; }
         public List<DiabetesDataModel> postSupperBloodGlucoseDose { get; set; }
         public List<DiabetesDataModel> typicalExcerciseActivity { get; set; }
-        public List<DiabetesDataModel> moreThanUsualExcerciseActivity { get; set; }
-        public List<DiabetesDataModel> lessThanUsualExcerciseActivity { get; set; }
     }
 }

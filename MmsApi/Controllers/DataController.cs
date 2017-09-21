@@ -6,6 +6,7 @@ using System.IO;
 using System.Diagnostics;
 using MmsApi.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MmsApi.Controllers
 {
@@ -23,8 +24,15 @@ namespace MmsApi.Controllers
             data.preSupperBloodGlucoseDose = new List<DiabetesDataModel>();
             data.postSupperBloodGlucoseDose = new List<DiabetesDataModel>();
             data.typicalExcerciseActivity = new List<DiabetesDataModel>();
-            data.moreThanUsualExcerciseActivity = new List<DiabetesDataModel>();
-            data.lessThanUsualExcerciseActivity = new List<DiabetesDataModel>();
+
+            var regularInsulinDose = new List<DiabetesDataModel>();
+            var preBreakfastBloodGlucoseDose = new List<DiabetesDataModel>();
+            var postBreakfastBloodGlucoseDose = new List<DiabetesDataModel>();
+            var preLunchBloodGlucoseDose = new List<DiabetesDataModel>();
+            var postLunchBloodGlucoseDose = new List<DiabetesDataModel>();
+            var preSupperBloodGlucoseDose = new List<DiabetesDataModel>();
+            var postSupperBloodGlucoseDose = new List<DiabetesDataModel>();
+            var typicalExcerciseActivity = new List<DiabetesDataModel>();
             try
             {
                 string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Diabetes-Data\");
@@ -48,18 +56,23 @@ namespace MmsApi.Controllers
                             dataModel.Code = Convert.ToDouble(items[2]);
                             dataModel.Value = Convert.ToDouble(items[3]);
                             if(dataModel.Code == 33) data.regularInsulinDose.Add(dataModel);
-                            else if (dataModel.Code == 58) data.preBreakfastBloodGlucoseDose.Add(dataModel);
-                            else if (dataModel.Code == 59) data.postBreakfastBloodGlucoseDose.Add(dataModel);
-                            else if (dataModel.Code == 60) data.preLunchBloodGlucoseDose.Add(dataModel);
-                            else if (dataModel.Code == 61) data.postLunchBloodGlucoseDose.Add(dataModel);
-                            else if (dataModel.Code == 62) data.preSupperBloodGlucoseDose.Add(dataModel);
-                            else if (dataModel.Code == 63) data.postSupperBloodGlucoseDose.Add(dataModel);
-                            else if (dataModel.Code == 69) data.typicalExcerciseActivity.Add(dataModel);
-                            else if (dataModel.Code == 70) data.moreThanUsualExcerciseActivity.Add(dataModel);
-                            else if (dataModel.Code == 71) data.lessThanUsualExcerciseActivity.Add(dataModel);
+                            else if (dataModel.Code == 58) preBreakfastBloodGlucoseDose.Add(dataModel);
+                            else if (dataModel.Code == 59) postBreakfastBloodGlucoseDose.Add(dataModel);
+                            else if (dataModel.Code == 60) preLunchBloodGlucoseDose.Add(dataModel);
+                            else if (dataModel.Code == 61) postLunchBloodGlucoseDose.Add(dataModel);
+                            else if (dataModel.Code == 62) preSupperBloodGlucoseDose.Add(dataModel);
+                            else if (dataModel.Code == 63) postSupperBloodGlucoseDose.Add(dataModel);
+                            else if (dataModel.Code == 69) typicalExcerciseActivity.Add(dataModel);
                         }
                     }
                 }
+                data.preBreakfastBloodGlucoseDose = preBreakfastBloodGlucoseDose.OrderBy(x => x.Value).ToList();
+                data.postBreakfastBloodGlucoseDose = postBreakfastBloodGlucoseDose.OrderBy(x => x.Value).ToList();
+                data.preLunchBloodGlucoseDose = preLunchBloodGlucoseDose.OrderBy(x => x.Value).ToList();
+                data.postLunchBloodGlucoseDose = postLunchBloodGlucoseDose.OrderBy(x => x.Value).ToList();
+                data.preSupperBloodGlucoseDose = preSupperBloodGlucoseDose.OrderBy(x => x.Value).ToList();
+                data.postSupperBloodGlucoseDose = postSupperBloodGlucoseDose.OrderBy(x => x.Value).ToList();
+                data.typicalExcerciseActivity = typicalExcerciseActivity.OrderBy(x => x.Value).ToList();
                 return Ok(data);
             }
             catch (Exception ex)
