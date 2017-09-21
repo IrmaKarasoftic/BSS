@@ -15,8 +15,9 @@ namespace MmsApi.Controllers
 
         public IHttpActionResult Get()
         {
+            var allData = new List<DiabetesDataModel>();
             var data = new AllDataModel();
-            data.regularInsulinDose = new List<DiabetesDataModel>();
+            //data.regularInsulinDose = new List<DiabetesDataModel>();
             data.preBreakfastBloodGlucoseDose = new List<DiabetesDataModel>();
             data.postBreakfastBloodGlucoseDose = new List<DiabetesDataModel>();
             data.preLunchBloodGlucoseDose = new List<DiabetesDataModel>();
@@ -41,7 +42,7 @@ namespace MmsApi.Controllers
                 {
                     FileInfo info = new FileInfo(files);
                     var fileName = Path.GetFileName(info.FullName);
-                    using (TextReader tr = File.OpenText(path+fileName))
+                    using (TextReader tr = File.OpenText(path + fileName))
                     {
                         string line;
                         while ((line = tr.ReadLine()) != null)
@@ -52,10 +53,11 @@ namespace MmsApi.Controllers
                             string[] date = items[0].Split('-');
                             string[] time = items[1].Split(':');
                             DateTime dt = new DateTime(Convert.ToInt32(date[2]), Convert.ToInt32(date[0]), Convert.ToInt32(date[1]), Convert.ToInt32(time[0]), Convert.ToInt32(time[1]), 0);
-                            dataModel.DateMesured = dt;
+                            dataModel.DateMeasured = dt;
                             dataModel.Code = Convert.ToDouble(items[2]);
                             dataModel.Value = Convert.ToDouble(items[3]);
-                            if(dataModel.Code == 33) data.regularInsulinDose.Add(dataModel);
+                            if (dataModel.Code == 60 || dataModel.Code == 61) allData.Add(dataModel);
+                            if (dataModel.Code == 33) regularInsulinDose.Add(dataModel);
                             else if (dataModel.Code == 58) preBreakfastBloodGlucoseDose.Add(dataModel);
                             else if (dataModel.Code == 59) postBreakfastBloodGlucoseDose.Add(dataModel);
                             else if (dataModel.Code == 60) preLunchBloodGlucoseDose.Add(dataModel);
@@ -66,13 +68,20 @@ namespace MmsApi.Controllers
                         }
                     }
                 }
-                data.preBreakfastBloodGlucoseDose = preBreakfastBloodGlucoseDose.OrderBy(x => x.Value).ToList();
-                data.postBreakfastBloodGlucoseDose = postBreakfastBloodGlucoseDose.OrderBy(x => x.Value).ToList();
-                data.preLunchBloodGlucoseDose = preLunchBloodGlucoseDose.OrderBy(x => x.Value).ToList();
-                data.postLunchBloodGlucoseDose = postLunchBloodGlucoseDose.OrderBy(x => x.Value).ToList();
-                data.preSupperBloodGlucoseDose = preSupperBloodGlucoseDose.OrderBy(x => x.Value).ToList();
-                data.postSupperBloodGlucoseDose = postSupperBloodGlucoseDose.OrderBy(x => x.Value).ToList();
-                data.typicalExcerciseActivity = typicalExcerciseActivity.OrderBy(x => x.Value).ToList();
+                data.regularInsulinDose = regularInsulinDose.Where(x=>x.Value<50 && x.Value>0).GroupBy(d => d.Value);
+
+                data.preBreakfastBloodGlucoseDose = preBreakfastBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.postBreakfastBloodGlucoseDose = postBreakfastBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.preLunchBloodGlucoseDose = preLunchBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.postLunchBloodGlucoseDose = postLunchBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.preSupperBloodGlucoseDose = preSupperBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.postSupperBloodGlucoseDose = postSupperBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.typicalExcerciseActivity = typicalExcerciseActivity.OrderBy(x => x.DateMeasured).Take(40).ToList();
+
+                data.grouppedData = allData.GroupBy(d => d.DateMeasured)
+                    .Where(x => x.ToList().Count == 2)
+                    .Where(z => ((z.ToList()[0].Code == 60 && z.ToList()[1].Code == 61) || (z.ToList()[0].Code == 61 && z.ToList()[1].Code == 60)));
+
                 return Ok(data);
             }
             catch (Exception ex)
