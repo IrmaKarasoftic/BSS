@@ -36,9 +36,9 @@
                     var date = dateTime.getDate() + '/' + dateTime.getMonth();
                     graphLabels.push(date);
                     var color;
-                    if (label.value >= 80 && label.value < 100) color = 'rgba(0, 183, 61, 0.2)';
-                    else if ((label.value >= 100 && label.value < 125) || label.value < 170) color = 'rgba(203, 234, 0, 0.2)'
-                    else color = 'rgba(255, 59, 0, 0.2)';
+                    if (label.value > 50 && label.value < 80) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
+                    else if (label.value >= 80 && label.value < 150) color = 'rgba(203, 234, 0, 0.2)'; //normalna zuta
+                    else color = 'rgba(255, 59, 0, 0.2)'; // iznad normale crvena
                     backgroundColors.push(color);
                 });
             var ctx = document.getElementById("myChart0").getContext('2d');
@@ -50,7 +50,6 @@
                         labels: graphLabels,
                         datasets: [
                             {
-                                label: 'Pre Breakfast Blood Glucose Dose',
                                 data: values,
                                 backgroundColor: backgroundColors,
                                 borderWidth: 3
@@ -61,9 +60,24 @@
                         scales: {
                             yAxes: [
                                 {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "mg/dL",
+                                        fontColor: "green"
+                                    },
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        max: 350
                                     }
+                                }
+                            ],
+                            xAxes: [
+                                {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "Date measured",
+                                        fontColor: "green"
+                                    },
                                 }
                             ]
                         }
@@ -82,9 +96,9 @@
                     var date = dateTime.getDate() + '/' + dateTime.getMonth();
                     graphLabels.push(date);
                     var color;
-                    if (label.value >= 170 && label.value < 195) color = 'rgba(0, 183, 61, 0.2)';
-                    else if ((label.value >= 195 && label.value < 225) || label.value < 170) color = 'rgba(203, 234, 0, 0.2)'
-                    else color = 'rgba(255, 59, 0, 0.2)';
+                    if (label.value > 170 && label.value < 195) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
+                    else if (label.value >= 195 && label.value < 225) color = 'rgba(203, 234, 0, 0.2)'; //normalna zuta
+                    else color = 'rgba(255, 59, 0, 0.2)'; // iznad normale crvena
                     backgroundColors.push(color);
                 });
             var ctx = document.getElementById("myChart1").getContext('2d');
@@ -108,10 +122,26 @@
                             yAxes: [
                                 {
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        max: 350
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "mg/dL",
+                                        fontColor: "green"
                                     }
                                 }
+                            ],
+                            xAxes: [
+                                {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "Date measured",
+                                        fontColor: "green"
+                                    },
+                                }
                             ]
+
                         }
                     }
                 });
@@ -129,9 +159,9 @@
                     var date = dateTime.getDate() + '/' + dateTime.getMonth();
                     graphLabels.push(date);
                     var color;
-                    if (label.value >= 80 && label.value < 100) color = 'rgba(0, 183, 61, 0.2)';
-                    else if ((label.value >= 100 && label.value < 125) || label.value < 170) color = 'rgba(203, 234, 0, 0.2)'
-                    else color = 'rgba(255, 59, 0, 0.2)';
+                    if (label.value > 50 && label.value < 80) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
+                    else if (label.value >= 80 && label.value < 150) color = 'rgba(203, 234, 0, 0.2)'; //normalna zuta
+                    else color = 'rgba(255, 59, 0, 0.2)'; // iznad normale crvena
                     backgroundColors.push(color);
                 });
             var ctx = document.getElementById("myChart2").getContext('2d');
@@ -155,8 +185,23 @@
                             yAxes: [
                                 {
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        max: 500
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "mg/dL",
+                                        fontColor: "green"
                                     }
+                                }
+                            ],
+                            xAxes: [
+                                {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "Date measured",
+                                        fontColor: "green"
+                                    },
                                 }
                             ]
                         }
@@ -175,9 +220,9 @@
                     var date = dateTime.getDate() + '/' + dateTime.getMonth();
                     graphLabels.push(date);
                     var color;
-                    if (label.value >= 170 && label.value < 195) color = 'rgba(0, 183, 61, 0.2)';
-                    else if ((label.value >= 195 && label.value < 225) || label.value < 170) color = 'rgba(203, 234, 0, 0.2)'
-                    else color = 'rgba(255, 59, 0, 0.2)';
+                    if (label.value > 170 && label.value < 195) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
+                    else if (label.value >= 195 && label.value < 225) color = 'rgba(203, 234, 0, 0.2)'; //normalna zuta
+                    else color = 'rgba(255, 59, 0, 0.2)'; // iznad normale crvena
                     backgroundColors.push(color);
                 });
             var ctx = document.getElementById("myChart3").getContext('2d');
@@ -201,8 +246,23 @@
                             yAxes: [
                                 {
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        max: 500
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "mg/dL",
+                                        fontColor: "green"
                                     }
+                                }
+                            ],
+                            xAxes: [
+                                {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "Date measured",
+                                        fontColor: "green"
+                                    },
                                 }
                             ]
                         }
@@ -222,9 +282,9 @@
                     var date = dateTime.getDate() + '/' + dateTime.getMonth();
                     graphLabels.push(date);
                     var color;
-                    if (label.value >= 80 && label.value < 100) color = 'rgba(0, 183, 61, 0.2)';
-                    else if ((label.value >= 100 && label.value < 125) || label.value < 170) color = 'rgba(203, 234, 0, 0.2)'
-                    else color = 'rgba(255, 59, 0, 0.2)';
+                    if (label.value > 50 && label.value < 80) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
+                    else if (label.value >= 80 && label.value < 150) color = 'rgba(203, 234, 0, 0.2)'; //normalna zuta
+                    else color = 'rgba(255, 59, 0, 0.2)'; // iznad normale crvena
                     backgroundColors.push(color);
                 });
             var ctx = document.getElementById("myChart4").getContext('2d');
@@ -248,8 +308,23 @@
                             yAxes: [
                                 {
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        max: 500
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "mg/dL",
+                                        fontColor: "green"
                                     }
+                                }
+                            ],
+                            xAxes: [
+                                {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "Date measured",
+                                        fontColor: "green"
+                                    },
                                 }
                             ]
                         }
@@ -268,9 +343,9 @@
                     var date = dateTime.getDate() + '/' + dateTime.getMonth();
                     graphLabels.push(date);
                     var color;
-                    if (label.value >= 170 && label.value < 195) color = 'rgba(0, 183, 61, 0.2)';
-                    else if ((label.value >= 195 && label.value < 225) || label.value < 170) color = 'rgba(203, 234, 0, 0.2)'
-                    else color = 'rgba(255, 59, 0, 0.2)';
+                    if (label.value > 170 && label.value < 195) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
+                    else if (label.value >= 195 && label.value < 225) color = 'rgba(203, 234, 0, 0.2)'; //normalna zuta
+                    else color = 'rgba(255, 59, 0, 0.2)'; // iznad normale crvena
                     backgroundColors.push(color);
                 });
             var ctx = document.getElementById("myChart5").getContext('2d');
@@ -294,8 +369,23 @@
                             yAxes: [
                                 {
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        max: 500
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "mg/dL",
+                                        fontColor: "green"
                                     }
+                                }
+                            ],
+                            xAxes: [
+                                {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "Date measured",
+                                        fontColor: "green"
+                                    },
                                 }
                             ]
                         }
