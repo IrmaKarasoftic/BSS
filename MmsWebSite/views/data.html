@@ -1,53 +1,165 @@
-﻿    <div class="row" style="margin-bottom:250px">
-        <div style="height: 200px; width:48%; float:left ">
+﻿<div class="row" href="#regularInsulinDose">
+    <div>
+        <div class="row" style="text-align:center">
+            <br />
+            <p class="lead"><em><strong>Regularna doza insulina ({{brojIspitanika}} ispitanika)</strong></em></p>
+        </div>
+        <canvas style="height: 200px; width:48%;" id="myChart6"></canvas>
+    </div>
+</div>
+
+<hr />
+<hr />
+<br />
+<br />
+<div class="row" style="margin-bottom:350px">
+    <div class="row">
+        <div style="height: 200px; width:48%; float:left" href="#preBreakfast">
+            <div class="row" style="text-align:center">
+                <br />
+                <p class="lead"><em><strong>Nivo glukoze u krvi prije doručka</strong></em></p>
+            </div>
+            <div class="row" style="text-align:center">
+                <div id="legenda">
+                    <div id="rectangle-blue" class="rectangle"></div>
+                    <div id="description">Nisko (50-80)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-yellow" class="rectangle"></div>
+                    <div id="description">Normalno (80-150)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-red" class="rectangle"></div>
+                    <div id="description">Rizicno (<50,>150)</div>
+                </div>
+            </div>
             <canvas id="myChart0"></canvas>
         </div>
-        <div style="height: 200px; width:48%; float:right ">
+        <div style="height: 200px; width:48%; float:right" href="#postBreakfast">
+            <div class="row" style="text-align:center">
+                <br />
+                <p class="lead"><em><strong>Nivo glukoze u krvi nakon doručka</strong></em></p>
+            </div>
+            <div class="row" style="text-align:center">
+                <div id="legenda">
+                    <div id="rectangle-blue" class="rectangle"></div>
+                    <div id="description">Nisko (170-195)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-yellow" class="rectangle"></div>
+                    <div id="description">Normalno (195-225)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-red" class="rectangle"></div>
+                    <div id="description">Rizicno (<70,>225)</div>
+                </div>
+            </div>
             <canvas id="myChart1"></canvas>
         </div>
     </div>
-    <div class="row" style="margin-bottom:250px">
-        <div style="height: 200px; width:48%; float:left ">
-            <canvas id="myChart2"></canvas>
+</div>
+<!--<div ng-repeat="d in data.preBreakfastBloodGlucoseDose" class="mapa" style="display:inline-block">
+    <div style="display:inline-block" ng-class="{'rectangle-blue-small' : d.value>50 && d.value<80, 'rectangle-yellow-small'  : d.value>=80 && d.value<150, 'rectangle-red-small': d.value<50 || d.value>=150}"></div>
+</div>-->
+<hr />
+<hr />
+<br />
+<div class="row" style="margin-bottom:350px">
+    <div style="height: 200px; width:48%; float:left" href="#preLunch">
+        <div class="row" style="text-align:center">
+            <br />
+            <p class="lead"><em><strong>Nivo glukoze u krvi prije ručka</strong></em></p>
         </div>
-        <div style="height: 200px; width:48%; float:right ">
-            <canvas id="myChart3"></canvas>
+        <div class="row">
+            <div class="row" style="text-align:center">
+                <div id="legenda">
+                    <div id="rectangle-blue" class="rectangle"></div>
+                    <div id="description">Nisko (50-80)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-yellow" class="rectangle"></div>
+                    <div id="description">Normalno (80-150)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-red" class="rectangle"></div>
+                    <div id="description">Rizicno (<50,>150)</div>
+                </div>
+            </div>
         </div>
+        <canvas id="myChart2"></canvas>
     </div>
-    <div class="row" style="margin-bottom:250px">
-        <div style="height: 200px; width:48%; float:left ">
-            <canvas id="myChart4"></canvas>
+    <div style="height: 200px; width:48%; float:right" href="#postLunch">
+        <div class="row" style="text-align:center">
+            <br />
+            <p class="lead"><em><strong>Nivo glukoze u krvi nakon ručka</strong></em></p>
         </div>
-        <div style="height: 200px; width:48%; float:right ">
-            <canvas id="myChart5"></canvas>
+        <div class="row">
+            <div class="row" style="text-align:center">
+                <div id="legenda">
+                    <div id="rectangle-blue" class="rectangle"></div>
+                    <div id="description">Nisko (170-195)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-yellow" class="rectangle"></div>
+                    <div id="description">Normalno (195-225)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-red" class="rectangle"></div>
+                    <div id="description">Rizicno (<70,>225)</div>
+                </div>
+            </div>
         </div>
-    </div>
-<div class="row" style="margin-bottom:250px">
-    <div>
-        <canvas style="height: 200px; width:48%;" id="myChart6"></canvas>
-    </div>
-    <div style="text-align:center">
-        <p>Regular insulin dose</p>
+        <canvas id="myChart3"></canvas>
     </div>
 </div>
-<div ng-show="waitUsers">
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
-            </div>
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
-            </div>
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
-            </div>
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
-            </div>
-            <div class="loader-line-wrap">
-                <div class="loader-line"></div>
+<hr />
+<hr />
+<br />
+<div class="row" style="margin-bottom:350px">
+    <div style="height: 200px; width:48%; float:left" href="#preSupper">
+        <div class="row" style="text-align:center">
+            <br />
+            <p class="lead"><em><strong>Nivo glukoze u krvi prije večere</strong></em></p>
+        </div>
+        <div class="row">
+            <div class="row" style="text-align:center">
+                <div id="legenda">
+                    <div id="rectangle-blue" class="rectangle"></div>
+                    <div id="description">Nisko (50-80)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-yellow" class="rectangle"></div>
+                    <div id="description">Normalno (80-150)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-red" class="rectangle"></div>
+                    <div id="description">Rizicno (<50,>150)</div>
+                </div>
             </div>
         </div>
+        <canvas id="myChart4"></canvas>
+    </div>
+    <div style="height: 200px; width:48%; float:right" href="#postSupper">
+        <div class="row" style="text-align:center">
+            <br />
+            <p class="lead"><em><strong>Nivo glukoze u krvi nakon večere</strong></em></p>
+        </div>
+        <div class="row">
+            <div class="row" style="text-align:center">
+                <div id="legenda">
+                    <div id="rectangle-blue" class="rectangle"></div>
+                    <div id="description">Nisko (170-195)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-yellow" class="rectangle"></div>
+                    <div id="description">Normalno (195-225)</div>
+                </div>
+                <div id="legenda">
+                    <div id="rectangle-red" class="rectangle"></div>
+                    <div id="description">Rizicno (<70,>225)</div>
+                </div>
+            </div>
+        </div>
+        <canvas id="myChart5"></canvas>
     </div>
 </div>

@@ -69,14 +69,14 @@ namespace MmsApi.Controllers
                     }
                 }
                 data.regularInsulinDose = regularInsulinDose.Where(x=>x.Value<50 && x.Value>0).GroupBy(d => d.Value);
-
-                data.preBreakfastBloodGlucoseDose = preBreakfastBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
-                data.postBreakfastBloodGlucoseDose = postBreakfastBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
-                data.preLunchBloodGlucoseDose = preLunchBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
-                data.postLunchBloodGlucoseDose = postLunchBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
-                data.preSupperBloodGlucoseDose = preSupperBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
-                data.postSupperBloodGlucoseDose = postSupperBloodGlucoseDose.OrderBy(x => x.DateMeasured).Take(40).ToList();
-                data.typicalExcerciseActivity = typicalExcerciseActivity.OrderBy(x => x.DateMeasured).Take(40).ToList();
+                var startDate = new DateTime(1990, 1, 1);
+                data.preBreakfastBloodGlucoseDose = preBreakfastBloodGlucoseDose.Where(d=>d.DateMeasured>startDate).OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.postBreakfastBloodGlucoseDose = postBreakfastBloodGlucoseDose.Where(d => d.DateMeasured > startDate).OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.preLunchBloodGlucoseDose = preLunchBloodGlucoseDose.Where(d => d.DateMeasured > startDate).OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.postLunchBloodGlucoseDose = postLunchBloodGlucoseDose.Where(d => d.DateMeasured > startDate).OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.preSupperBloodGlucoseDose = preSupperBloodGlucoseDose.Where(d => d.DateMeasured > startDate).OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.postSupperBloodGlucoseDose = postSupperBloodGlucoseDose.Where(d => d.DateMeasured > startDate).OrderBy(x => x.DateMeasured).Take(40).ToList();
+                data.typicalExcerciseActivity = typicalExcerciseActivity.Where(d => d.DateMeasured > startDate).OrderBy(x => x.DateMeasured).Take(40).ToList();
 
                 data.grouppedData = allData.GroupBy(d => d.DateMeasured)
                     .Where(x => x.ToList().Count == 2)

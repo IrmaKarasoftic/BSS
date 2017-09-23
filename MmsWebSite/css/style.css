@@ -1,1 +1,75 @@
-﻿
+﻿#legenda {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display:inline-block;
+}
+
+#rectangle-blue {
+    width: 70px;
+    height: 5px;
+    padding: 10px;
+    border: 3px solid;
+    border-color: rgb(204, 204, 204);
+    margin: 0; 
+    display:inline-block;
+    background-color: rgba(66, 134, 244, 0.2)
+}
+
+#rectangle-yellow {
+    width: 70px;
+    height: 5px;
+    padding: 10px;
+    border: 3px solid;
+    border-color: rgb(204, 204, 204);
+    margin: 0; 
+    display:inline-block;
+    background-color: rgba(203, 234, 0, 0.2)
+}
+
+#rectangle-red {
+    width: 70px;
+    height: 5px;
+    padding: 10px;
+    border: 3px solid;
+    border-color: rgb(204, 204, 204);
+    margin: 0; 
+    display:inline-block;
+    background-color: rgba(255, 59, 0, 0.2)
+}
+
+.rectangle-blue-small {
+    width: 5px;
+    height: 5px;
+    padding: 10px;
+    border-color: rgb(204, 204, 204);
+    margin: 0; 
+    display:inline-block;
+    background-color: rgba(66, 134, 244, 0.2)
+}
+
+.rectangle-yellow-small {
+    width: 5px;
+    height: 5px;
+    padding: 10px;
+    border-color: rgb(204, 204, 204);
+    margin: 0; 
+    display:inline-block;
+    background-color: rgba(203, 234, 0, 0.2)
+}
+
+.rectangle-red-small {
+    width: 5px;
+    height: 5px;
+    padding: 10px;
+    border-color: rgb(204, 204, 204);
+    margin: 0; 
+    display:inline-block;
+    background-color: rgba(255, 59, 0, 0.2)
+}
+
+#description {
+    display:inline-block;
+    width: 120px;
+    vertical-align:7px;
+    font-size:11px;
+}

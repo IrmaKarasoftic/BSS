@@ -33,7 +33,8 @@
                 (label) => {
                     values.push(label.value);
                     var dateTime = new Date(label.dateMeasured);
-                    var date = dateTime.getDate() + '/' + dateTime.getMonth();
+                    var mjesec = dateTime.getMonth() + 1;
+                    var date = dateTime.getDate() + '/' + mjesec;
                     graphLabels.push(date);
                     var color;
                     if (label.value > 50 && label.value < 80) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
@@ -57,13 +58,16 @@
                         ]
                     },
                     options: {
+                        legend: {
+                            display: false
+                        },
                         scales: {
                             yAxes: [
                                 {
                                     scaleLabel: {
                                         display: true,
                                         labelString: "mg/dL",
-                                        fontColor: "green"
+                                        fontColor: "black"
                                     },
                                     ticks: {
                                         beginAtZero: true,
@@ -75,13 +79,13 @@
                                 {
                                     scaleLabel: {
                                         display: true,
-                                        labelString: "Date measured",
-                                        fontColor: "green"
+                                        labelString: "Datum mjerenja",
+                                        fontColor: "black"
                                     },
                                 }
                             ]
-                        }
-                    }
+                        },
+                    },
                 });
         }
         $scope.configurePostBreakfast = function (data) {
@@ -93,7 +97,8 @@
                 (label) => {
                     values.push(label.value);
                     var dateTime = new Date(label.dateMeasured);
-                    var date = dateTime.getDate() + '/' + dateTime.getMonth();
+                    var mjesec = dateTime.getMonth() + 1;
+                    var date = dateTime.getDate() + '/' + mjesec;
                     graphLabels.push(date);
                     var color;
                     if (label.value > 170 && label.value < 195) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
@@ -110,7 +115,6 @@
                         labels: graphLabels,
                         datasets: [
                             {
-                                label: 'Post Breakfast Blood Glucose Dose',
                                 data: values,
                                 backgroundColor: backgroundColors,
                                 borderWidth: 3
@@ -118,6 +122,9 @@
                         ]
                     },
                     options: {
+                        legend: {
+                            display: false
+                        },
                         scales: {
                             yAxes: [
                                 {
@@ -128,7 +135,7 @@
                                     scaleLabel: {
                                         display: true,
                                         labelString: "mg/dL",
-                                        fontColor: "green"
+                                        fontColor: "black"
                                     }
                                 }
                             ],
@@ -136,8 +143,8 @@
                                 {
                                     scaleLabel: {
                                         display: true,
-                                        labelString: "Date measured",
-                                        fontColor: "green"
+                                        labelString: "Datum mjerenja",
+                                        fontColor: "black"
                                     },
                                 }
                             ]
@@ -151,12 +158,12 @@
             var graphLabels = [];
             var values = [];
             var backgroundColors = [];
-            var aa = data[1];
             angular.forEach(data.preLunchBloodGlucoseDose,
                 (label) => {
                     values.push(label.value);
                     var dateTime = new Date(label.dateMeasured);
-                    var date = dateTime.getDate() + '/' + dateTime.getMonth();
+                    var mjesec = dateTime.getMonth() + 1;
+                    var date = dateTime.getDate() + '/' + mjesec;
                     graphLabels.push(date);
                     var color;
                     if (label.value > 50 && label.value < 80) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
@@ -173,7 +180,6 @@
                         labels: graphLabels,
                         datasets: [
                             {
-                                label: 'Pre Lunch Blood Glucose Dose',
                                 data: values,
                                 backgroundColor: backgroundColors,
                                 borderWidth: 3
@@ -181,6 +187,9 @@
                         ]
                     },
                     options: {
+                        legend: {
+                            display: false
+                        },
                         scales: {
                             yAxes: [
                                 {
@@ -191,7 +200,7 @@
                                     scaleLabel: {
                                         display: true,
                                         labelString: "mg/dL",
-                                        fontColor: "green"
+                                        fontColor: "black"
                                     }
                                 }
                             ],
@@ -199,8 +208,8 @@
                                 {
                                     scaleLabel: {
                                         display: true,
-                                        labelString: "Date measured",
-                                        fontColor: "green"
+                                        labelString: "Datum mjerenja",
+                                        fontColor: "black"
                                     },
                                 }
                             ]
@@ -217,7 +226,8 @@
                 (label) => {
                     values.push(label.value);
                     var dateTime = new Date(label.dateMeasured);
-                    var date = dateTime.getDate() + '/' + dateTime.getMonth();
+                    var mjesec = dateTime.getMonth() + 1;
+                    var date = dateTime.getDate() + '/' + mjesec;
                     graphLabels.push(date);
                     var color;
                     if (label.value > 170 && label.value < 195) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
@@ -234,7 +244,6 @@
                         labels: graphLabels,
                         datasets: [
                             {
-                                label: 'Post Lunch Blood Glucose Dose',
                                 data: values,
                                 backgroundColor: backgroundColors,
                                 borderWidth: 3
@@ -242,6 +251,9 @@
                         ]
                     },
                     options: {
+                        legend: {
+                            display: false
+                        },
                         scales: {
                             yAxes: [
                                 {
@@ -252,7 +264,7 @@
                                     scaleLabel: {
                                         display: true,
                                         labelString: "mg/dL",
-                                        fontColor: "green"
+                                        fontColor: "black"
                                     }
                                 }
                             ],
@@ -260,8 +272,8 @@
                                 {
                                     scaleLabel: {
                                         display: true,
-                                        labelString: "Date measured",
-                                        fontColor: "green"
+                                        labelString: "Datum mjerenja",
+                                        fontColor: "black"
                                     },
                                 }
                             ]
@@ -279,7 +291,8 @@
                 (label) => {
                     values.push(label.value);
                     var dateTime = new Date(label.dateMeasured);
-                    var date = dateTime.getDate() + '/' + dateTime.getMonth();
+                    var mjesec = dateTime.getMonth() + 1;
+                    var date = dateTime.getDate() + '/' + mjesec;
                     graphLabels.push(date);
                     var color;
                     if (label.value > 50 && label.value < 80) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
@@ -296,7 +309,6 @@
                         labels: graphLabels,
                         datasets: [
                             {
-                                label: 'Pre Supper Blood Glucose Dose',
                                 data: values,
                                 backgroundColor: backgroundColors,
                                 borderWidth: 3
@@ -304,6 +316,9 @@
                         ]
                     },
                     options: {
+                        legend: {
+                            display: false
+                        },
                         scales: {
                             yAxes: [
                                 {
@@ -314,7 +329,7 @@
                                     scaleLabel: {
                                         display: true,
                                         labelString: "mg/dL",
-                                        fontColor: "green"
+                                        fontColor: "black"
                                     }
                                 }
                             ],
@@ -322,8 +337,8 @@
                                 {
                                     scaleLabel: {
                                         display: true,
-                                        labelString: "Date measured",
-                                        fontColor: "green"
+                                        labelString: "Datum mjerenja",
+                                        fontColor: "black"
                                     },
                                 }
                             ]
@@ -340,7 +355,8 @@
                 (label) => {
                     values.push(label.value);
                     var dateTime = new Date(label.dateMeasured);
-                    var date = dateTime.getDate() + '/' + dateTime.getMonth();
+                    var mjesec = dateTime.getMonth() + 1;
+                    var date = dateTime.getDate() + '/' + mjesec;
                     graphLabels.push(date);
                     var color;
                     if (label.value > 170 && label.value < 195) color = 'rgba(66, 134, 244, 0.2)'; //ispod normale plava
@@ -357,7 +373,6 @@
                         labels: graphLabels,
                         datasets: [
                             {
-                                label: 'Post Supper Blood Glucose Dose',
                                 data: values,
                                 backgroundColor: backgroundColors,
                                 borderWidth: 3
@@ -365,6 +380,9 @@
                         ]
                     },
                     options: {
+                        legend: {
+                            display: false
+                        },
                         scales: {
                             yAxes: [
                                 {
@@ -375,7 +393,7 @@
                                     scaleLabel: {
                                         display: true,
                                         labelString: "mg/dL",
-                                        fontColor: "green"
+                                        fontColor: "black"
                                     }
                                 }
                             ],
@@ -383,8 +401,8 @@
                                 {
                                     scaleLabel: {
                                         display: true,
-                                        labelString: "Date measured",
-                                        fontColor: "green"
+                                        labelString: "Datum mjerenja",
+                                        fontColor: "black"
                                     },
                                 }
                             ]
@@ -397,9 +415,10 @@
             var graphLabels = [];
             var values = [];
             var backgroundColors = [];
-            var aa = data[1];
+            $scope.brojIspitanika = 0;
             angular.forEach(data.regularInsulinDose,
                 (label) => {
+                    $scope.brojIspitanika = $scope.brojIspitanika + label.length;
                     if (label.length > 150) {
                         graphLabels.push(label[0].value);
                         values.push(label.length);
@@ -415,12 +434,17 @@
                         labels: graphLabels,
                         datasets: [
                             {
-                                label: 'Regular Insulin Dose',
                                 data: values,
                                 backgroundColor: backgroundColors
                             }
-                        ]
+                        ],
                     },
+                    options: {
+                        animation: {
+                            animateRotate: false,
+                            animateScale: true
+                        }
+                    }
                 });
         }
         $scope.loadData();
